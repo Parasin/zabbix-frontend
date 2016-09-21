@@ -191,10 +191,10 @@ var methods = {
             , "method": "user.create"
             , "params": {
                 "alias": user.alias
-                , "passwd": "Ericsson123"
+                , "passwd": user.password
                 , "usrgrps": [
                     {
-                        "usrgrpid": "8"
+                        "usrgrpid": user.group_id
                     }
                 ]
             }
