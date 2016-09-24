@@ -1,29 +1,22 @@
-<div layout="column" layout-sm="column" layout-align="center center" layout-padding="2em" layout-margin>
+<!--<div layout="column" layout-sm="column" layout-align="center center" layout-padding="2em" layout-margin>
     <p flex class="jumbotron">Welcome to the dashboard</p>
     <div flex ng-cloak style="height: 100px; width: 66%; margin: 0 auto; text-align: center" layout-gt-xs="row" layout-align="center center" layout-fill layout-margin>
         <p flex="66" class="alert alert-success" ng-if="session">{{ $root.session }}</p>
     </div>
 
-</div>
+</div>-->
 
 <div style="margin: 0 auto" class="row">
     <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="group in host_groups">
         <!--<md-card flex="33" flex-xs="100" class="trigger_card" ng-repeat="group in host_groups">-->
-        <md-card class="trigger_card text-center">
+        <md-card class="trigger_card text-center" ng-class="{'severity_none': !groups.triggers, 'severity_not_classified': group.triggers.priority == 0, 'severity_information': group.triggers.priority == 1, 'severity_warning': group.triggers.priority == 2, 'severity_average': group.triggers.priority == 3, 'severity_high': group.triggers.priority == 4, 'severity_disaster': group.triggers.priority == 5}">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{ group.name }}</span>
                 </md-card-title-text>
             </md-card-title>
-            <!--<md-card-content layout="row" layout-align="center center">
-            </md-card-content>-->
+            <md-card-content layout="row" layout-align="center center"> {{group.triggers.priority}}
+            </md-card-content>
         </md-card>
     </div>
 </div>
-
-    <!--<div flex flex-gt-sm="20"><p class="circle_dimensions severity_information"></p></div>
-    <div flex flex-gt-sm="20"><p class="circle_dimensions severity_warning"></p></div>
-    <div flex flex-gt-sm="20"><p class="circle_dimensions severity_average"></p></div>
-    <div flex flex-gt-sm="20"><p class="circle_dimensions severity_high"></p></div>
-    <div flex flex-gt-sm="20"><p class="circle_dimensions severity_disaster"></p></div>
-    <div flex flex-gt-sm="20"><p class="circle_dimensions severity_information"></p></div>-->

@@ -5,6 +5,10 @@
     margin: 0 auto;
 }
 
+.severity_none {
+    background-color: green;
+}
+
 .severity_not_classified {
     background-color: darkgray;
 }
