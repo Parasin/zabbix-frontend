@@ -64,7 +64,8 @@ var methods = {
             , "method": "hostgroup.get"
             , "params": {
                 "output": "extend"
-                , "with_hosts_and_templates": 1
+                , "monitored_hosts": 1
+                , "sortfield": 'name'
             }
             , "auth": SESSIONID
             , "id": 1
@@ -260,9 +261,10 @@ var methods = {
             , "method": "trigger.get"
             , "params": {
                 "output": "extend"
-                , "selectHosts": "extend"
                 , "selectGroups": "extend"
                 , "monitored": true
+                , "only_true": true
+                , "sortfield": "priority"
             }
             , "auth": SESSIONID
             , "id": 1

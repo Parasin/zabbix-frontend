@@ -65,9 +65,9 @@ app.post('/logout', function (req, res) {
 });
 
 app.post('/hosts', function (req, res) {
-    var body = _.pick(req.body, 'sessionid');
+    var body = _.pick(req.body, 'session_id');
 
-    zabbixApi(methods.getHosts(body.sessionid))
+    zabbixApi(methods.getHosts(body.session_id))
         .then(function (hosts) {
             res.json(hosts);
         }, function (err) {
@@ -77,10 +77,10 @@ app.post('/hosts', function (req, res) {
 
 
 app.post('/history/host', function (req, res) {
-    var body = _.pick(req.body, 'sessionid', 'hostid', 'name');
+    var body = _.pick(req.body, 'session_id', 'hostid', 'name');
     //res.send(query);
 
-    zabbixApi(methods.getHistoryByHost(body.sessionid, body.hostid))
+    zabbixApi(methods.getHistoryByHost(body.session_id, body.hostid))
         .then(function (items) {
             res.send(items);
         }, function (err) {
@@ -89,10 +89,10 @@ app.post('/history/host', function (req, res) {
 });
 
 app.post('/history/host/item', function (req, res) {
-    var body = _.pick(req.body, 'sessionid', 'hostid', 'itemid');
+    var body = _.pick(req.body, 'session_id', 'hostid', 'itemid');
     //res.send(query);
 
-    zabbixApi(methods.getHistoryByItem(body.sessionid, body.itemid))
+    zabbixApi(methods.getHistoryByItem(body.session_id, body.itemid))
         .then(function (items) {
             res.send(items);
         }, function (err) {
@@ -100,14 +100,28 @@ app.post('/history/host/item', function (req, res) {
         });
 });
 
-app.post('/triggers', function (req, res) {
+app.post('/hostGroups', function (req, res) {
+    console.log('Host group request');
     var body = _.pick(req.body, 'session_id');
-    zabbixApi(methods.getAllActiveTriggers(body.session_id))
-       .then(function (triggers) {
-           res.send(triggers);
-       }, function (err) {
-           res.status(404).send(err);
-       });
+    /*zabbixApi(methods.getHostGroups(body.session_id))
+        .then(function (groups) {
+            res.send(groups);
+        }, function (err) {
+            res.status(400).send(err);
+        });*/
+    res.sendFile('/server/host_group_output.txt', {root: __dirname});
+});
+
+app.post('/triggers', function (req, res) {
+    console.log('Trigger request');
+    /*var body = _.pick(req.body, 'session_id');
+     zabbixApi(methods.getAllActiveTriggers(body.session_id))
+        .then(function (triggers) {
+            res.send(triggers);
+        }, function (err) {
+            res.status(404).send(err);
+        });*/
+    res.sendFile('/server/trigger_output.txt', {root: __dirname});
 });
 
 app.listen(PORT, function () {
