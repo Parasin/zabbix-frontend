@@ -103,25 +103,25 @@ app.post('/history/host/item', function (req, res) {
 app.post('/hostGroups', function (req, res) {
     console.log('Host group request');
     var body = _.pick(req.body, 'session_id');
-    /*zabbixApi(methods.getHostGroups(body.session_id))
+    zabbixApi(methods.getHostGroups(body.session_id))
         .then(function (groups) {
             res.send(groups);
         }, function (err) {
             res.status(400).send(err);
-        });*/
-    res.sendFile('/server/host_group_output.txt', {root: __dirname});
+        });
+    //res.sendFile('/server/host_group_output.txt', {root: __dirname});
 });
 
 app.post('/triggers', function (req, res) {
     console.log('Trigger request');
-    /*var body = _.pick(req.body, 'session_id');
+    var body = _.pick(req.body, 'session_id');
      zabbixApi(methods.getAllActiveTriggers(body.session_id))
         .then(function (triggers) {
             res.send(triggers);
         }, function (err) {
             res.status(404).send(err);
-        });*/
-    res.sendFile('/server/trigger_output.txt', {root: __dirname});
+        });
+    //res.sendFile('/server/trigger_output.txt', {root: __dirname});
 });
 
 app.listen(PORT, function () {

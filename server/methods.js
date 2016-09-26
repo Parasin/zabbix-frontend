@@ -264,7 +264,11 @@ var methods = {
                 , "selectGroups": "extend"
                 , "monitored": true
                 , "only_true": true
+                , "skipDependent": true
                 , "sortfield": "priority"
+                , "filter": {
+                    "value": 1
+                }
             }
             , "auth": SESSIONID
             , "id": 1

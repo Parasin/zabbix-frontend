@@ -1,6 +1,6 @@
 var app = angular.module('zabbix_dash');
 
-app.factory('authFactory', ['$q', '$timeout', '$http', '$cookies', function ($q, $timeout, $http, $cookies) {
+app.factory('authFactory', ['$q', '$timeout', '$http', '$cookies', '$rootScope', function ($q, $timeout, $http, $cookies, $rootScope) {
     var user = false;
     var factory = {};
     var userData = {};
@@ -26,8 +26,10 @@ app.factory('authFactory', ['$q', '$timeout', '$http', '$cookies', function ($q,
                     if ($cookies.get('session_id')) {
                         $cookies.remove('session_id');
                     }
-                    $cookies.put('session_id', data.session_id);
-                    userData = data;
+                    console.log('Adding session cookie:' + JSON.stringify(data.data));
+                    $cookies.put('session_id', data.data.session_id);
+                    $rootScope.session = data.data.session_id;
+                    userData = data.data;
                     deferred.resolve(data.data);
                 } else {
                     user = false;
@@ -47,6 +49,7 @@ app.factory('authFactory', ['$q', '$timeout', '$http', '$cookies', function ($q,
         $http.post('/logout', session_id)
             .then(function (data) {
                 $cookies.remove('session_id');
+                $rootScope.session = null;
                 user = false;
                 userData = {};
                 deferred.resolve(data.data);
