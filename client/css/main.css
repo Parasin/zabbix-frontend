@@ -1,3 +1,15 @@
 .background {
-    background: url("../img/black_lozenge/black_lozenge.png") repeat;
+
+    /*background: url("../img/black_lozenge/black_lozenge.png") repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: auto;*/
+}
+
+@media only screen and (min-width: 500px) {
+    .loginForm {
+        margin: 0 auto;
+        padding: 3em;
+    }
 }

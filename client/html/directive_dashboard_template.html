@@ -1,0 +1,12 @@
+<div class="col-md-3 col-sm-6 col-xs-12" ng-transclude>
+    <md-card class="trigger_card text-center" ng-class="{'severity_none': group.max_priority == -1, 'severity_not_classified': group.max_priority == 0, 'severity_information': group.max_priority == 1, 'severity_warning': group.max_priority == 2, 'severity_average': group.max_priority == 3, 'severity_high': group.max_priority == 4, 'severity_disaster': group.max_priority == 5}">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ group.name }}</span>
+                <span class="md-subhead">Number of triggers: {{ group.triggers.length }}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="center center">
+        </md-card-content>
+    </md-card>
+</div>

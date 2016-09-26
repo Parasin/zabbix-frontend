@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/trigger_display.css">
 </head>
 <body ng-app="zabbix_dash" class="background">
-<nav ng-controller="navController as navVM" class="navbar navbar-inverse navbar-fixed-top">
+<nav ng-controller="navController as navVM" class="navbar navbar-default navbar-fixed-top">
     <div id="navContainer">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".collapse">
@@ -19,18 +19,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/">Login</a>
+            <a class="navbar-brand" href="#/">Angular Zabbix Dashboard</a>
         </div>
         <div class="collapse navbar-collapse">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li class="navFont" ng-class="{navActive: isActive('/')}"><a href="#/">Home</a></li>
-                    <!--<li class="navFont" ng-class="{navActive: isActive('/projects')}"><a href="#/projects">Projects</a></li>
-                    <li class="navFont" ng-class="{navActive: isActive('/tutorials')}"><a href="#/tutorials">Tutorials</a></li>
-                    <li class="navFont" ng-class="{navActive: isActive('/about')}"><a href="#/about">About</a></li>-->
+                    <li class="navfont" ng-class="{navactive: isactive('/')}"><a href="#/">Home</a></li>
+                    <li class="navfont" ng-class="{navactive: isactive('/dashboard')}"><a href="#/dashboard">Dashboard</a></li>
+                    <!--<li class="navfont" ng-class="{navactive: isactive('/tutorials')}"><a href="#/tutorials">tutorials</a></li>
+                    <li class="navfont" ng-class="{navactive: isactive('/about')}"><a href="#/about">about</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-                    <li class="navFont" ng-if="$root.session" ng-click="logout()"><a href="#/">Logout</a></li>
+                    <li class="navfont" ng-if="$root.session" ng-click="logout()"><a href="#/">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -52,6 +52,9 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-messages.min.js"></script>
 <script src="/lib/underscore.min.js"></script>
 <script src="/lib/main.js"></script>
+<script src="/lib/auth_controllers.js"></script>
+<script src="/lib/nav_controllers.js"></script>
+<script src="/lib/dash_controllers.js"></script>
 <script src="/lib/routes.js"></script>
 <script src="/lib/authFactory.js"></script>
 </body>

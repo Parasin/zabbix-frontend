@@ -262,6 +262,8 @@ var methods = {
             , "params": {
                 "output": "extend"
                 , "selectGroups": "extend"
+                , "selectHosts": "extend"
+                , "withUnacknowledgedEvents": true
                 , "monitored": true
                 , "only_true": true
                 , "skipDependent": true

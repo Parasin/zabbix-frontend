@@ -1,6 +1,43 @@
+<script src="../lib/directive_dashboard.js"></script>
+
 <div ng-cloak style="margin: 0 auto" class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="group in host_groups">
-        <!--<md-card flex="33" flex-xs="100" class="trigger_card" ng-repeat="group in host_groups">-->
+   <!--<div class="col-md-8 col-md-offset-2">
+        <table class="table table-bordered text-center">
+            <thead>
+            <tr>
+                <td>Host Group</td>
+                <td>Active Triggers</td>
+                <td>Number of Triggers</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="trigger_card text-center"
+                ng-class="{'severity_none': group.max_priority == -1, 'severity_not_classified': group.max_priority == 0, 'severity_information': group.max_priority == 1, 'severity_warning': group.max_priority == 2, 'severity_average': group.max_priority == 3, 'severity_high': group.max_priority == 4, 'severity_disaster': group.max_priority == 5}"
+                ng-repeat="group in host_groups">
+                <td class="group_name">{{ group.name }}
+                    <td><table class="table dash_trigger" ng-hide="group.triggers.length == 0">
+                        <thead>
+                        <tr>
+                            <th>Host</th>
+                            <th>Trigger</th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="trigger in group.triggers">
+                        <tr>
+                            <td>{{ trigger.hosts[0].host }}</td>
+                            <td>{{ trigger.description }}</td>
+                        </tr>
+
+                        </tbody>
+                    </table></td>
+                </td>
+                <td>{{ group.triggers.length }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>-->
+
+    <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="group in host_groups" style="display: block">
         <md-card class="trigger_card text-center" ng-class="{'severity_none': group.max_priority == -1, 'severity_not_classified': group.max_priority == 0, 'severity_information': group.max_priority == 1, 'severity_warning': group.max_priority == 2, 'severity_average': group.max_priority == 3, 'severity_high': group.max_priority == 4, 'severity_disaster': group.max_priority == 5}">
             <md-card-title>
                 <md-card-title-text>
@@ -8,7 +45,24 @@
                     <span class="md-subhead">Number of triggers: {{ group.triggers.length }}</span>
                 </md-card-title-text>
             </md-card-title>
-            <md-card-content layout="row" layout-align="center center">
+            <md-card-content class="dash_trigger" layout="row" layout-align="center center">
+                <div>
+                    <table class="table" ng-hide="group.triggers.length == 0">
+                        <thead>
+                            <tr>
+                                <th>Host</th>
+                                <th>Trigger</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="trigger in group.triggers">
+                            <tr>
+                                <td>{{ trigger.hosts[0].host }}</td>
+                                <td>{{ trigger.description }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
             </md-card-content>
         </md-card>
     </div>
